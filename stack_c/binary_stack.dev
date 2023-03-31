@@ -1,6 +1,6 @@
 [Project]
-FileName=stack_students.dev
-Name=stack_students
+FileName=binary_stack.dev
+Name=binary_stack
 Type=1
 Ver=2
 ObjFiles=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=stacktemp.c
+FileName=binary_stack.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -61,7 +61,17 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=stacktemp.h
+FileName=binary_stack.h
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=official_binary_main.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -71,7 +81,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=stack_maintemp.c
+FileName=official_binary_main.c
 CompileCpp=0
 Folder=
 Compile=1

@@ -1,6 +1,6 @@
 [Project]
-FileName=stack_students.dev
-Name=stack_students
+FileName=metathematic.dev
+Name=metathematic
 Type=1
 Ver=2
 ObjFiles=
@@ -50,8 +50,21 @@ ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=1
 
+[Unit3]
+FileName=metathematic_main.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=metathematic.c
+
 [Unit1]
-FileName=stacktemp.c
+FileName=metathematic.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -61,17 +74,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=stacktemp.h
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=stack_maintemp.c
+FileName=metathematic.c
 CompileCpp=0
 Folder=
 Compile=1

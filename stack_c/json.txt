@@ -1,0 +1,70 @@
+,
+    
+    "workbench.colorCustomizations":
+    {
+        "editor.background": "#000000",
+        "sideBar.background": "#111111",
+        "scrollbarSlider.activeBackground": "#e5e8e9",
+        "tab.inactiveBackground": "#1e1d25",
+        "panel.background": "#111111"
+ 
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                 "keyword.control.flow.python" 
+                 ],
+                 "settings": {
+                 "foreground": "#569CD6"
+                 }
+            },
+            {
+                "scope":
+                [
+                    "string.quoted.single.python"
+                ],
+                "settings":
+                {
+                    "foreground": "#c48181de"
+                }
+            },
+            {
+                "scope":
+                [
+                    "support.type.exception.python"
+                ],
+                "settings":
+                {
+                    "foreground": "#d65656"
+                }
+            },
+            {
+                "scope":
+                [
+                    "entity.name.function","entity.name.function.member","support.type.python"
+                ],
+                "settings":
+                {
+                    "foreground": "#d18559e1"
+                }
+            },
+            {
+                "scope":
+                [
+                    "comment.line.number-sign.python"
+                ],
+                "settings":
+                {
+                    "foreground": "#adc481d7"
+                }
+            }
+        ]
+    }
+    ,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "overtype.abbreviatedStatus": true,
+    "workbench.statusBar.visible": true,
+    "editor.wordWrap": "on"
+}

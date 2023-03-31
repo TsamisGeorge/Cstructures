@@ -1,15 +1,15 @@
-# Project: metathematic
+# Project: queue
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = metathematic.o metathematic_main.o
-LINKOBJ  = metathematic.o metathematic_main.o
+OBJ      = queue.o queue_main.o
+LINKOBJ  = queue.o queue_main.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = metathematic.exe
+BIN      = queue.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
 RM       = rm.exe -f
@@ -24,8 +24,8 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-metathematic.o: metathematic.c
-	$(CC) -c metathematic.c -o metathematic.o $(CFLAGS)
+queue.o: queue.c
+	$(CC) -c queue.c -o queue.o $(CFLAGS)
 
-metathematic_main.o: metathematic_main.c
-	$(CC) -c metathematic_main.c -o metathematic_main.o $(CFLAGS)
+queue_main.o: queue_main.c
+	$(CC) -c queue_main.c -o queue_main.o $(CFLAGS)
