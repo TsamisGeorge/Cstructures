@@ -1,6 +1,6 @@
 [Project]
-FileName=queue.dev
-Name=queue
+FileName=circle_queue.dev
+Name=circle_queue
 Type=1
 Ver=2
 ObjFiles=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=queue.c
+FileName=circle_queue.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -61,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=queue.h
+FileName=circle_queue.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=queue_main.c
+FileName=circle_queue_main.c
 CompileCpp=0
 Folder=
 Compile=1
