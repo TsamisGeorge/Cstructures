@@ -14,7 +14,10 @@ struct node{
 };
 
 //synonyms for the names of node and  also node pointer
-typedef struct node LIST;
+typedef struct node LIST_NODE;
 typedef struct node * LIST_PTR;
 
-void LL_init(LIST_PTR *h);
+void LL_init(LIST_PTR *head);
+int LL_empty(LIST_PTR head);
+int LL_data(LIST_PTR p);
+int LL_insert_start(LIST_PTR *head, elem x);
