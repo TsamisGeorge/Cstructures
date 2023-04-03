@@ -2,6 +2,5 @@
 
 main()
 {
-	LIST_PTR head;
 	
 }

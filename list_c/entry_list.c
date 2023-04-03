@@ -1,7 +1,8 @@
-/* linked_list.c: Kwdikas tis vivliothikis sindedemenis listas */
+/* list.c: Kwdikas tis vivliothikis sindedemenis listas */
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.h"
+#include <string.h>
+#include "entry_list.h"
 
 /* LL_init(): arxikopoiei tin lista */
 void LL_init(LIST_PTR *head)
@@ -105,9 +106,10 @@ void LL_print(LIST_PTR head)
 	current=head;
 	while(current!=NULL)
 	{
-		printf("%d ",current->data);
+		printf("(%s, %d) -> ",current->data.name, current->data.grade);
 		current=current->next;
 	}
+	printf("null");
 }
 
 /* LL_destroy(): Apodesmeyei to xwro poy exei 
@@ -122,5 +124,114 @@ void LL_destroy(LIST_PTR *head)
 		ptr=*head;
 		*head=(*head)->next;
 		free(ptr);
+	}
+}
+
+
+int LL_insert(LIST_PTR *head, elem x)
+{
+	LIST_PTR current, prev;
+	if(*head == NULL)
+	{
+		return LL_insert_start(head, x);
+	}
+	else
+	{
+		current = *head;
+		prev = current;
+		while(current != NULL)
+		{
+			if(strcmp(current -> data.name, x.name)>0)
+			{
+				if(*head == current)
+				{
+					return LL_insert_start(head, x);
+				}
+				else
+				{
+					return LL_insert_after(prev, x);
+				}
+			}
+			prev = current;
+			current = current -> next;
+		}
+		return LL_insert_after(prev, x);
+	}
+}
+
+int LL_delete_student(LIST_PTR *head, char *s)
+{
+	LIST_PTR current, prev;
+	elem temp;
+	current = *head;
+	prev = current;
+	
+	if(*head == NULL)
+		return FALSE;
+	
+	while(current != NULL)
+	{
+		
+		if(strcmp(current -> data.name, s) == 0)
+		{
+			if(*head == current)
+			{
+				return LL_delete_start(head, &temp);
+			}
+			else
+			{
+				return LL_delete_after(prev, &temp);
+			}
+		}
+		
+		prev = current;
+		current = current -> next;
+	}
+	return LL_delete_after(prev, &temp);
+}
+
+
+double LL_average(LIST_PTR head)
+{
+	LIST_PTR current;
+	current = head;
+	float avg = 0;
+	int sample = 0;
+	if(LL_empty(head))
+	{
+		return FALSE;
+	}
+	else
+	{
+		while(current != NULL)
+		{
+			avg += current -> data.grade;
+			sample++;
+			current = current -> next;
+		}
+		return avg/sample;
+	}
+}
+
+int LL_students_that_passed(LIST_PTR head)
+{
+	LIST_PTR current;
+	current = head;
+	int students = 0;
+	if(LL_empty(head))
+	{
+		return FALSE;
+	}
+	else
+	{
+		while(current != NULL)
+		{
+			if(current -> data.grade >= 5)
+			{
+				students++;
+			}
+			current = current -> next;
+		}
+		return students;
 	}
 }

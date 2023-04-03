@@ -3,7 +3,12 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef int elem;          /* typos dedomenwn listas */
+struct ELEM{
+	char name[80];
+	int grade;
+};
+
+typedef struct ELEM elem;
 
 struct node{			   /* Typos komvou listas */
    elem data; 			   /* dedomena */
@@ -22,3 +27,8 @@ int LL_delete_start(LIST_PTR *head, elem *x);
 int LL_delete_after(LIST_PTR prev, elem *x);
 void LL_print(LIST_PTR head);
 void LL_destroy(LIST_PTR *head);
+
+int LL_insert(LIST_PTR *head, elem x);
+int LL_delete_student(LIST_PTR *head, char *s);
+double LL_average(LIST_PTR head);
+int LL_students_that_passed(LIST_PTR head);
