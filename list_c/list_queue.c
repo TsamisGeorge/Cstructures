@@ -154,7 +154,18 @@ void QU_enqueue(QUEUE *q, elem x)
 
 int QU_dequeue(QUEUE *q, elem *x)
 {
-	
+	if(QU_empty(*q))
+	{
+		printf("Queue is empty.");
+		return FALSE
+	}
+	else
+	{
+		LL_delete_start(&(q -> first), x);
+		if(QU_empty(*q))
+			q -> last = NULL;
+		return TRUE;
+	}
 }
 
 void QU_print(QUEUE q);
