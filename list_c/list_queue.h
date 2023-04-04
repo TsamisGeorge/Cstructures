@@ -1,5 +1,4 @@
 /* list_stack.h : Dilwseis sindedemenis listas */
-
 #define TRUE 1
 #define FALSE 0
 
@@ -13,7 +12,12 @@ struct node{			   /* Typos komvou listas */
 typedef struct node LIST_NODE; /* Sinwnimo tou komvou listas */
 typedef struct node *LIST_PTR; /* Sinwnimo tou deikti komvou */
 
-typedef LIST_PTR STACK; 
+struct queue{
+	LIST_PTR first;
+	LIST_PTR last;
+};
+
+typedef struct stack QUEUE;
 
 void LL_init(LIST_PTR *head);
 int LL_empty(LIST_PTR head);
@@ -25,12 +29,14 @@ int LL_delete_after(LIST_PTR prev, elem *x);
 void LL_print(LIST_PTR head);
 void LL_destroy(LIST_PTR *head);
 
+//////////////////////////////////////////////
 
-void ST_init(STACK *s);
-int ST_empty(STACK s);
-int ST_push(STACK *s, elem x);
-int ST_pop(STACK *s, elem *x);
-int ST_print(STACK s);
-void ST_destroy(STACK s);
+void QU_init(QUEUE *q);
+int QU_empty(QUEUE q);
+void QU_enqueue(QUEUE *q, elem x);
+int QU_dequeue(QUEUE *q, elem *x);
+void QU_print(QUEUE q);
+void QU_destroy(QUEUE q);
+
 
 

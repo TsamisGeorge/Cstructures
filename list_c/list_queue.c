@@ -1,7 +1,7 @@
 /* linked_list.c: Kwdikas tis vivliothikis sindedemenis listas */
 #include <stdio.h>
 #include <stdlib.h>
-#include "list_stack.h"
+#include "list_queue.h"
 
 /* LL_init(): arxikopoiei tin lista */
 void LL_init(LIST_PTR *head)
@@ -127,34 +127,42 @@ void LL_destroy(LIST_PTR *head)
 
 //////////////////////////////////////////////////////////////////////////////
 
-void ST_init(STACK *s)
+void QU_init(QUEUE *q)
 {
-	LL_init(s);
+	q -> first = NULL;
+	q -> last = NULL;
 }
 
-int ST_empty(STACK s)
+int QU_empty(QUEUE q)
 {
-	return LL_empty(s);
+	return LL_empty(q.first);
 }
 
-int ST_push(STACK *s, elem x)
+void QU_enqueue(QUEUE *q, elem x)
 {
-	return LL_insert_start(s, x);
+	if(LL_empty(q -> first))
+	{
+		LL_insert_start(&(q -> first), x);
+		q -> last = q -> first;	
+	}
+	else
+	{
+		LL_insert_after(q -> last, x);
+		q -> last = q -> last -> next;
+	}
 }
 
-int ST_pop(STACK *s, elem *x)
+int QU_dequeue(QUEUE *q, elem *x)
 {
-	return LL_delete_start(s, x);
+	
 }
 
-int ST_print(STACK s)
+void QU_print(QUEUE q);
 {
-	LL_print(s);
+	LL_print(q.first);
 }
 
-void ST_destroy(STACK *s)
+void QU_destroy(QUEUE q)
 {
-	LL_destroy(s);
+	LL_destroy(&q.first);
 }
-
-

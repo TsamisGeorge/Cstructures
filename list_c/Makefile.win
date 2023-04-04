@@ -1,15 +1,15 @@
-# Project: entry_list
+# Project: list_stack
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = entry_list.o entry_list_main.o
-LINKOBJ  = entry_list.o entry_list_main.o
+OBJ      = list_stack.o list_stack_main.o
+LINKOBJ  = list_stack.o list_stack_main.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = entry_list.exe
+BIN      = list_stack.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
 RM       = rm.exe -f
@@ -24,8 +24,8 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-entry_list.o: entry_list.c
-	$(CC) -c entry_list.c -o entry_list.o $(CFLAGS)
+list_stack.o: list_stack.c
+	$(CC) -c list_stack.c -o list_stack.o $(CFLAGS)
 
-entry_list_main.o: entry_list_main.c
-	$(CC) -c entry_list_main.c -o entry_list_main.o $(CFLAGS)
+list_stack_main.o: list_stack_main.c
+	$(CC) -c list_stack_main.c -o list_stack_main.o $(CFLAGS)
