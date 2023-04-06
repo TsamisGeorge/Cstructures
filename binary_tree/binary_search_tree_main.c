@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "binary_tree.h"
+#include "binary_search_tree.h"
 
 main()
 {
@@ -33,5 +33,4 @@ main()
 	TR_inorder(root);
 	printf("\n POSTORDER: ");
 	TR_postorder(root);
-
 }

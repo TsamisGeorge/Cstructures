@@ -1,4 +1,4 @@
-#include "binary_tree.h"
+#include "binary_search_tree.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,7 +30,7 @@ int TR_insert_root(TREE_PTR *root, elem x)
 	TREE_PTR new_node;
 
 	//return false if the tree isn't empty
-	if(*root!= NULL)
+	if(!TR_empty(*root))
 		return False;
 	
 	
@@ -186,3 +186,111 @@ void TR_postorder(TREE_PTR v)
 	}
 }//check
 
+//searching a value inside a BST
+int TR_search_BST(TREE_PTR root, elem x)
+{
+	TREE_PTR current;
+	current = root;
+	while(current!=NULL)
+	{
+		if(current -> data == x)
+			return True;
+		else if(current -> data > x)
+		{
+			current = current -> left;
+		}
+		else
+		{
+			current = current -> right;
+		}
+	}
+	return False;
+}
+
+int TR_insert_BST(TREE_PTR *root, elem x)
+{
+	TREE_PTR new_node, curr_node;
+	new_node = malloc(sizeof(TREE_NODE));
+	new_node -> data = x;
+	curr_node = (*root);
+	if(TR_empty(*root))
+		(*root) = new_node;
+	while(1)
+	{
+		if(curr_node -> data == x)
+		{
+			free(new_node);
+			return False;
+		}//check
+		else if(x > curr_node -> data)
+		{
+			if(curr_node -> right == NULL)
+			{
+				curr_node -> right = new_node;
+				return True;
+			}
+			else
+				curr_node = curr_node -> right;
+		}//check
+		else if(x < curr_node -> data)
+		{
+			if(curr_node -> left == NULL)
+			{
+				curr_node -> left = new_node;
+				return True;
+			}
+			else
+				curr_node = curr_node -> left;
+		}//check
+	}
+}
+
+
+
+void TR_delete_BST(TREE_PTR *root, elem x)
+{
+    TREE_PTR parent_node = NULL;
+    TREE_PTR curr_node = *root;
+
+    // Find the node to be deleted and its parent
+    while (curr_node != NULL && curr_node->data != x) {
+        parent_node = curr_node;
+        if (x < curr_node->data)
+            curr_node = curr_node->left;
+        else
+            curr_node = curr_node->right;
+    }
+
+    // If the node is not found, return
+    if (curr_node == NULL)
+        return;
+
+    // If the node has two children, replace it with its in-order successor
+    if (curr_node->left != NULL && curr_node->right != NULL) {
+        TREE_PTR succ_parent_node = curr_node;
+        TREE_PTR succ_node = curr_node->right;
+        while (succ_node->left != NULL) {
+            succ_parent_node = succ_node;
+            succ_node = succ_node->left;
+        }
+        curr_node->data = succ_node->data;
+        curr_node = succ_node;
+        parent_node = succ_parent_node;
+    }
+
+    // If the node has one or no children, replace it with its child (if any)
+    TREE_PTR child_node = NULL;
+    if (curr_node->left != NULL)
+        child_node = curr_node->left;
+    else if (curr_node->right != NULL)
+        child_node = curr_node->right;
+    if (parent_node == NULL)
+        *root = child_node;
+    else if (parent_node->left == curr_node)
+        parent_node->left = child_node;
+    else
+        parent_node->right = child_node;
+
+    // Free the memory allocated for the deleted node
+    free(curr_node);
+}
