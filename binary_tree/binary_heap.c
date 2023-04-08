@@ -1,188 +1,116 @@
-#include "binary_tree.h"
+#include "binary_heap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-//init the tree
-void TR_init(TREE_PTR *root)
+void HEAP_init(HEAP *heap)
 {
-	*root = NULL;
-}//check
-
-
-//checking if the tree is empty
-int TR_empty(TREE_PTR root)
-{
-	return root == NULL;
-}//check
-
-//returning the data member of a node
-elem TR_data(TREE_PTR p)
-{
-	return p -> data;
-}//check
-
-
-
-//inserting the root node inside a null tree
-int TR_insert_root(TREE_PTR *root, elem x)
-{
-	//make a new node pointer for the tree
-	TREE_PTR new_node;
-
-	//return false if the tree isn't empty
-	if(*root!= NULL)
-		return False;
-	
-	
-	//malloc memory for it
-	new_node = (TREE_NODE *)malloc(sizeof(TREE_NODE));
-	if(!new_node)
-	{
-		printf("\nUnable to allocate memory.");
-		return False;
-	}
-	
-	//putting the right values on the members of the node
-	new_node -> data = x;
-	new_node -> left = NULL;
-	new_node -> right = NULL;
-	
-	//making the root pointer point to the new_node that is now the root of the tree
-	*root = new_node;
-	return True;
-}//check
-
-
-//insert a node as a left child
-int TR_insert_left(TREE_PTR node, elem x)
-{
-	TREE_PTR new_node;
-	
-	if(node -> left != NULL)
-		return False;
-	
-	
-	new_node = (TREE_NODE *)malloc(sizeof(TREE_NODE));
-	if(!new_node)
-	{
-		printf("\nUnable to allocaet memory.");
-		return False;
-	}
-	//puting the right values on the members of the new left child
-	new_node -> data = x;
-	new_node -> left = NULL;
-	new_node -> right = NULL;
-	//making node.left point to the new node
-	node -> left = new_node;
-	
-	return True;
-}//check
-
-
-//insert a node as a right child
-int TR_insert_right(TREE_PTR node, elem x)
-{
-	TREE_PTR new_node;
-	
-	if(node -> right != NULL)
-		return False;
-	
-	
-	new_node = (TREE_NODE *)malloc(sizeof(TREE_NODE));
-	if(!new_node)
-	{
-		printf("\nUnable to allocaet memory.");
-		return False;
-	}
-	//puting the right values on the members of the new right child
-	new_node -> data = x;
-	new_node -> left = NULL;
-	new_node -> right = NULL;
-	//making node.right point to the new node
-	node -> right = new_node;
-	
-	return True;
-}//check
-
-
-//deleting the root if it doesn't have children
-
-int TR_del_root(TREE_PTR *root, elem *x)
-{
-	if((*root) -> left != NULL || (*root) -> right != NULL)
-		return False;
-	
-	*x = (*root) -> data;
-	free(*root);
-	*root = NULL;
-	return True;
+	heap -> N = 0;
 }
 
-//deleting the left child of a parent if it has no kids
-int TR_del_left_child(TREE_PTR parent, elem *x)
+void swap(elem *x, elem *y)
 {
-	if(parent -> left == NULL)
+	elem temp;
+	
+	temp = *x;
+	*x = *y;
+	*y = temp;
+}
+
+
+int HEAP_insert(HEAP *heap, elem x)
+{
+	int parent_pos, current_pos;
+	if(heap -> N == MAX_SIZE)
 		return False;
-	if(parent -> left -> left != NULL || parent -> left -> right != NULL)
-		return False;
+		//otherwise if no size limit, set it as N pos
+	else
+	{
+		//put the elem in the last place of the tree
+		heap -> data[heap -> N] = x;
 		
-	*x = parent -> left -> data;
-	free(parent -> left);
-	parent -> left = NULL;
-	return True;
+		//the last pos of the array is raised by 1 
+		heap -> N ++;
+		
+		//getting the value of current N as current_pos
+		current_pos = heap -> N - 1 ;
+		
+		while(current_pos > 0)
+		{
+			//getting the value of the parent of the current_pos node
+			parent_pos = (current_pos - 1) / 2;
+			if(heap -> data[current_pos] < heap -> data[parent_pos])
+			{
+				//swap
+				swap(&heap -> data[current_pos], &heap -> data[parent_pos]);
+				current_pos = parent_pos;
+			}
+			else
+				break;
+		}
+		return True;
+	} 
 }
 
-//deleting the right child of a parent if it has no kids
-int TR_del_right_child(TREE_PTR parent, elem *x)
+int HEAP_delete(HEAP *heap, elem *x)
 {
-	if(parent -> right == NULL)
+	int current_pos, left_pos, right_pos, pos;
+	if(heap -> N == 0)
 		return False;
-	if(parent -> right -> left != NULL || parent -> right -> right != NULL)
-		return False;
+	//check
 	
-	*x = parent -> right -> data;
-	free(parent -> right);
-	parent -> right = NULL;
-	return True;
+	*x = heap -> data[0];
+	//check
+	
+	heap -> data[0] = heap -> data[heap -> N - 1];
+	heap -> N--;
+	//check
+	
+	current_pos = 0;
+	//check
+	
+	while(current_pos < heap -> N)
+	{
+		//check
+		
+		left_pos = 2 * current_pos + 1;
+		right_pos = 2 * current_pos + 2;
+			
+		if(left_pos >= heap ->N)
+			left_pos = -1;
+		if(right_pos >= heap -> N)
+			right_pos = -1;
+		
+		
+		if(left_pos == -1 && right_pos == -1)
+			break;
+		
+		else if(left_pos != -1 && right_pos == -1)
+		{
+			if(heap -> data[current_pos] < heap -> data[left_pos])
+			{
+				swap(&heap -> data[current_pos], &heap -> data[left_pos]);
+				current_pos = left_pos;
+			}
+			else
+				break;
+		}
+		
+		else 
+		{
+			
+			if(heap -> data[left_pos] > heap -> data[right_pos])
+				pos = left_pos;
+			else
+				pos = right_pos;
+			
+			
+			if(heap -> data[current_pos] < heap -> data[pos])
+			{
+				swap(&heap -> data[current_pos], &heap -> data[pos]);
+				current_pos = pos;
+			}
+			else
+				break;
+		}
+	}	
 }
-
-
-//temp
-void TR_print_node(TREE_PTR v)
-{
-	printf("%d ",v->data);
-}//check
-
-//print on the preorder path
-void TR_preorder(TREE_PTR v)
-{
-	if(v!=NULL)
-	{
-		TR_print_node(v);
-		TR_preorder(v -> left);
-		TR_preorder(v -> right);
-	}
-}//check
-
-//print on the inorder path
-void TR_inorder(TREE_PTR v)
-{
-	if(v != NULL)
-	{
-		TR_inorder(v -> left);
-		TR_print_node(v);
-		TR_inorder(v -> right);
-	}
-}//check
-
-//print on the postorder path
-void TR_postorder(TREE_PTR v)
-{
-	if(v != NULL)
-	{
-		TR_postorder(v -> left);
-		TR_postorder(v -> right);
-		TR_print_node(v);
-	}
-}//check
-

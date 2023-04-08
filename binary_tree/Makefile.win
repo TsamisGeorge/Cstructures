@@ -1,15 +1,15 @@
-# Project: binary_search_tree
+# Project: binary_heap
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = binary_search_tree.o binary_search_tree_main.o
-LINKOBJ  = binary_search_tree.o binary_search_tree_main.o
+OBJ      = binary_heap.o binary_heap_main.o
+LINKOBJ  = binary_heap.o binary_heap_main.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = binary_search_tree.exe
+BIN      = binary_heap.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
 RM       = rm.exe -f
@@ -24,8 +24,8 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-binary_search_tree.o: binary_search_tree.c
-	$(CC) -c binary_search_tree.c -o binary_search_tree.o $(CFLAGS)
+binary_heap.o: binary_heap.c
+	$(CC) -c binary_heap.c -o binary_heap.o $(CFLAGS)
 
-binary_search_tree_main.o: binary_search_tree_main.c
-	$(CC) -c binary_search_tree_main.c -o binary_search_tree_main.o $(CFLAGS)
+binary_heap_main.o: binary_heap_main.c
+	$(CC) -c binary_heap_main.c -o binary_heap_main.o $(CFLAGS)
