@@ -4,33 +4,67 @@
 
 main()
 {
-	int elem;
+	int choice,i;
+	int data;
 	TREE_PTR root;
 	
 	TR_init(&root);
-	
-	/* Eisagwgi tou "10" */
-	TR_insert_root(&root, 10);
+	TR_insert_BST(&root,10);
+	TR_insert_BST(&root,6);
+	TR_insert_BST(&root,3);
+	TR_insert_BST(&root,9);
+	TR_insert_BST(&root,12);
+	TR_insert_BST(&root,5);
+	TR_insert_BST(&root,4);
+	TR_insert_BST(&root,2);
+	TR_insert_BST(&root,1);
+	TR_insert_BST(&root,8);
+	while(1)
+	{
+		system("cls");
+		printf("Menu DDA: ");
+		printf("\n--------------");
+		printf("\n1-Eisagwgi");
+		printf("\n2-Diagrafi");
+		printf("\n3-Ektypwsi");
+		printf("\n4-Eksodos");
+		printf("\nEpilogi? ");
+		scanf("%d",&choice);
 		
-	/* Eisagwgi twn epipleon stoixeiwn */
-	TR_insert_left(root, 6); 
-	TR_insert_right(root, 14);
+		switch(choice)
+		{
+			case 1:
+				printf("\nDwse Stoixeio: ");
+				scanf("%d",&data);
+				if (TR_insert_BST(&root,data))
+					printf("Egine i eisagwgi!");
+				else
+					printf("Den egine i eisagwgi! To stoixeio yparxei idi!");
+				break;
+			case 2:
+				printf("\nDwse Stoixeio: ");
+				scanf("%d",&data);
+				if (TR_delete_BST(&root,data))
+					printf("Egine i apomakrinsi tou %d", data);
+				else
+					printf("Den egine i diagrafi. To stoixeio den yparxei!");
+				break;
+			case 3:
+				printf("\n INORDER: ");
+				TR_inorder(root);
+				printf("\n PREORDER: ");
+				TR_preorder(root);
+				printf("\n POSTORDER: ");
+				TR_postorder(root);
+				break;
+			case 4:
+				printf("Bye Bye!!");
+				exit(0);
+			default:
+				printf("Lathos eisodos!");
+		}
+		printf("\n\n");
+		system("pause");
+	}
 	
-	TR_insert_left(root->left, 5);
-	TR_insert_right(root->left, 7);
-	TR_insert_right(root->right, 19);
-	
-	TR_insert_left(root->left->left, 2);
-	TR_insert_right(root->left->right, 8);
-
-	TR_insert_right(root->left->left->left, 3);
-
-	
-	/* Ektypwsi toy dendrou */
-	printf("\n PREORDER: ");
-	TR_preorder(root);
-	printf("\n INORDER: ");
-	TR_inorder(root);
-	printf("\n POSTORDER: ");
-	TR_postorder(root);
 }

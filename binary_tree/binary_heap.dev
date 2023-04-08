@@ -1,6 +1,6 @@
 [Project]
-FileName=binary_search_tree.dev
-Name=binary_search_tree
+FileName=binary_heap.dev
+Name=binary_heap
 Type=1
 Ver=2
 ObjFiles=
@@ -29,7 +29,6 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=3
 
 [VersionInfo]
 Major=1
@@ -49,34 +48,4 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=1
-
-[Unit1]
-FileName=binary_search_tree.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit2]
-FileName=binary_search_tree.h
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=binary_search_tree_main.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
 
