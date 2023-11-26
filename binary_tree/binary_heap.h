@@ -13,8 +13,7 @@ struct heap_tree{
 typedef struct heap_tree HEAP;
 
 
-
-
-//void TR_preorder(TREE_PTR v);
-//void TR_inorder(TREE_PTR v);
-//void TR_postorder(TREE_PTR v);
+void swap(elem *x, elem *y);
+void HEAP_init(HEAP *heap);
+int HEAP_insert(HEAP *heap, elem x);
+int HEAP_delete(HEAP *heap, elem *x);

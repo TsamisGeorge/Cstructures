@@ -22,34 +22,31 @@ int HEAP_insert(HEAP *heap, elem x)
 	int parent_pos, current_pos;
 	if(heap -> N == MAX_SIZE)
 		return False;
-		//otherwise if no size limit, set it as N pos
-	else
+		//otherwise if reached size limit, set it as N pos
+	//put the elem in the last place of the tree
+	heap -> data[heap -> N] = x;
+	
+	//the last pos of the array is raised by 1 
+	heap -> N ++;
+	
+	//getting the value of current N as current_pos
+	current_pos = heap -> N - 1 ;
+	
+	while(current_pos > 0)
 	{
-		//put the elem in the last place of the tree
-		heap -> data[heap -> N] = x;
-		
-		//the last pos of the array is raised by 1 
-		heap -> N ++;
-		
-		//getting the value of current N as current_pos
-		current_pos = heap -> N - 1 ;
-		
-		while(current_pos > 0)
+		//getting the value of the parent of the current_pos node
+		parent_pos = (current_pos - 1) / 2;
+		if(heap -> data[current_pos] > heap -> data[parent_pos])
 		{
-			//getting the value of the parent of the current_pos node
-			parent_pos = (current_pos - 1) / 2;
-			if(heap -> data[current_pos] < heap -> data[parent_pos])
-			{
-				//swap
-				swap(&heap -> data[current_pos], &heap -> data[parent_pos]);
-				current_pos = parent_pos;
-			}
-			else
-				break;
+			//swap
+			swap(&heap -> data[current_pos], &heap -> data[parent_pos]);
+			current_pos = parent_pos;
 		}
-		return True;
-	} 
-}
+		else
+			break;
+	}
+	return True;
+} 
 
 int HEAP_delete(HEAP *heap, elem *x)
 {
@@ -74,27 +71,30 @@ int HEAP_delete(HEAP *heap, elem *x)
 		
 		left_pos = 2 * current_pos + 1;
 		right_pos = 2 * current_pos + 2;
-			
+		//check
+		
 		if(left_pos >= heap ->N)
 			left_pos = -1;
 		if(right_pos >= heap -> N)
 			right_pos = -1;
-		
+		//check
 		
 		if(left_pos == -1 && right_pos == -1)
 			break;
+		//check
 		
 		else if(left_pos != -1 && right_pos == -1)
 		{
+			//check
 			if(heap -> data[current_pos] < heap -> data[left_pos])
 			{
 				swap(&heap -> data[current_pos], &heap -> data[left_pos]);
 				current_pos = left_pos;
 			}
+			//check
 			else
 				break;
 		}
-		
 		else 
 		{
 			
